@@ -47,9 +47,9 @@ public class Kalkulator {
                             break;
                     }
                 }
-                System.out.println(line);
             }
         } catch (IOException e) {
+            results.add("plik dane nie istnieje");
             e.printStackTrace();
         }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {

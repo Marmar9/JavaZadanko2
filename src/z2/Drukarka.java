@@ -33,12 +33,21 @@ public class Drukarka {
                             results.add( queue.remove(indexOfMax).toString());
                         }
                     } else if (line.equals("koniec")) {
+                        if (queue.isEmpty()){
+                            results.add("brak");
+                        }
+                        while (!queue.isEmpty()){
+                            int indexOfMax = queue.indexOf(
+                                    queue.stream().max(Comparator.naturalOrder()).orElseThrow()
+                            );
+                            results.add( queue.remove(indexOfMax).toString());
+                        }
                         break;
                     }
                 }
-//                System.out.println(line);
             }
         } catch (IOException e) {
+            results.add("plik dane nie istnieje");
             e.printStackTrace();
         }
         System.out.println(results);
